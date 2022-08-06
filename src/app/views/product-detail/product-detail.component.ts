@@ -25,13 +25,11 @@ export class ProductDetailComponent implements OnInit,AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      console.log("params ", params);
+    this.route.params.subscribe(params => {
       if (params != null) {
-        this._id = params.id;
+        this._id = params.id; // logic here
       }
     });
-    this._id = "100";
     this.fetchProductDetailById();
   }
 
