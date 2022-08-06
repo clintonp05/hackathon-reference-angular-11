@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { take } from 'rxjs/operators';
+import { switchMap, take } from 'rxjs/operators';
 import { ApiService } from 'src/app/shared/services/api.service';
 
 import { AppConfigService } from '../../shared/services/app-config.service';
@@ -20,6 +20,7 @@ export class ProductDetailComponent implements OnInit,AfterViewInit {
 
   constructor(
     private route: ActivatedRoute,
+    public router: Router,
     private apiService: ApiService,
     private appConfigService: AppConfigService
   ) { }
@@ -37,11 +38,13 @@ export class ProductDetailComponent implements OnInit,AfterViewInit {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
     
+    
   }
 
   fetchProductDetailById() {
     this.apiService.getProductDetailsById(this._id)
-      .pipe(take(1))
+      .pipe(
+        take(1))
       .subscribe(
         (response: any) => {
           if (response.success) {
@@ -94,5 +97,13 @@ export class ProductDetailComponent implements OnInit,AfterViewInit {
 
   trackByStatementId(index: number, statement: any): string {
     return statement._id;
+  }
+
+  gotoStatementInfo(id) {
+    this.router.navigate(['/statement/' + id]);
+  }
+
+  goBack() {
+    this.router.navigate(['/home/']);
   }
 }

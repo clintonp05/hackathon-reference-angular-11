@@ -1,3 +1,5 @@
+<button class="btn btn-primary" (click)="goBack()">Back</button>
+
 <h2>Product Details and list of statements</h2>
 
 
@@ -7,13 +9,11 @@
     <div> Created Time : {{productDetailObj.createdTime}}</div>
 </div>
 
-<h3>Last 10 transactions</h3>
+<h2>Last 10 transactions</h2>
 
 
 <div>
-    <mat-list>
-        <mat-list-item *ngFor="let statement of accountStatementList;let i = index;trackBy:trackByStatementId">
-            <mat-list-item> <div>Statement - {{i+1}} | {{statement.comment}} | {{statement.amount}} </div></mat-list-item>
-        </mat-list-item>
-    </mat-list>
+        <div *ngFor="let statement of accountStatementList;let i = index;trackBy:trackByStatementId">
+            <div class="statement" (click)="gotoStatementInfo(statement._id)">Statement - {{i+1}} | {{statement.comment}} | {{statement.amount}} </div>
+        </div>
 </div>

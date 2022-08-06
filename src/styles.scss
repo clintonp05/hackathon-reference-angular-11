@@ -1,9 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body, div { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; font-size: 18px; }
 
 .m-tb-10{
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.statement {
+    cursor: pointer ;
+    padding: 3px;
+    border-bottom: 1px solid #EAEAEA;
+    align-items: center;
+}
+
+.btn-primary {
+    background-color: #1976d2;
+    padding: 5px;
+    color: white;
+    border: 1px solid #1976d2;
+    margin: 5px 0px;
+    cursor: pointer;
 }

@@ -33,4 +33,11 @@ export class ApiService {
     return this.httpClient.get(this.appConfigService.hostUrl+"/account/statement/"+accountId).pipe(catchError(this.handleError));
   }
   
+  public getStatementById(statementId) {
+    return this.httpClient.get(this.appConfigService.hostUrl+"/statement/"+statementId).pipe(catchError(this.handleError));
+  }
+
+  public getProductsForUser(payload) {
+    return this.httpClient.post(this.appConfigService.hostUrl+"/products/",payload).pipe(catchError(this.handleError));
+  }
 }

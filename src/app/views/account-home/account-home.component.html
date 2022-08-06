@@ -1,0 +1,15 @@
+
+<p style="font-size:20px"><b>Products</b></p>
+
+    <table class="table">
+        <tr>
+            <td>Account Number :</td>
+            <td>{{accountData.accountNumber}}</td>
+            <td> <button (click)="callAccountDetail(accountData._id)"> Account Detail</button></td>
+        </tr>
+        <tr>
+            <td>Account Balance :</td>
+            <td>{{accountData?.accountBalance + ' AED'}}</td>
+            <td><button (click)="callTransfer(accountData._id)"> Fund Transfer</button> </td>
+        </tr>
+    </table>
