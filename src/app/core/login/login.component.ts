@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { switchMap, take } from 'rxjs/operators';
+import { ApiService } from 'src/app/shared/services/api.service';
+
 import { AppConfigService } from 'src/app/shared/services/app-config.service';
 
 
@@ -15,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router:Router,
-    private appConfigService: AppConfigService
+    private appConfigService: AppConfigService,
+    private apiService : ApiService
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email,Validators.pattern(
@@ -33,9 +37,36 @@ export class LoginComponent implements OnInit {
     if(!this.loginForm.valid){
       return;
     }
-    
-    this.appConfigService.setAccessToken()
+    this.loginAuthenticate(this.loginForm);
     this.router.navigate(['/home'])
+  }
+
+  loginAuthenticate(payload : FormGroup) {
+    this.apiService.authenticateUser(payload)
+      .pipe(
+        take(1))
+      .subscribe(
+        (response: any) => {
+          if (response.success) {
+            switch (response.statusCode) {
+              case this.appConfigService.STATUS_CODE_SUCCESS:
+                this.appConfigService.setAccessToken(response.data.value)
+                this.appConfigService.setIsLoggedIn("true");
+                break;
+              case this.appConfigService.STATUS_CODE_NO_CONTENT:
+                break;
+              case this.appConfigService.STATUS_CODE_INTERNAL_SERVER_ERROR:
+                break;
+              default:
+                break;
+            }
+          } else {
+            // api failure
+          }
+        },
+        (error) => { },
+        () => { }
+      );
   }
 
 }

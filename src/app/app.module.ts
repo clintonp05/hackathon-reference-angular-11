@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';  
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -6,6 +7,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatListModule} from '@angular/material/list';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatFormFieldModule, MatInputModule } from '@angular/material';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +26,7 @@ import { LoginComponent } from './core/login/login.component';
     LoginComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -30,6 +34,7 @@ import { LoginComponent } from './core/login/login.component';
     FormsModule,
     ReactiveFormsModule,
     MatListModule,
+    MatFormFieldModule,
     ScrollingModule
   ],
   providers: [

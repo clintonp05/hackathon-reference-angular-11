@@ -1,6 +1,6 @@
 <div class="text-center">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate class="d-flex-center">
-        <div class="example-container">
+        <div class="container example-container">
             <div>
                 <mat-form-field>
                     <input matInput placeholder="Email" formControlName="email">
@@ -24,7 +24,7 @@
                 </mat-form-field>
             </div>
             <div class="mt-top">
-                <button [disabled]="!loginForm.valid" mat-raised-button color="primary" mat-button>Login</button>
+                <button class="btn btn-primary btn-large" [disabled]="!loginForm.valid" mat-raised-button color="primary" mat-button>Login</button>
             </div>
         </div>
     </form>

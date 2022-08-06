@@ -1,0 +1,50 @@
+<button class="btn btn-primary" (click)="goBack()">Back</button>
+<h2>Transfer  Funds</h2>
+<form [formGroup]="enquiryForm" *ngIf="!updatebalnce">
+   <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxLayout="column">
+         <div fxLayout="row ">
+            Balance : 100000
+         </div>
+         <div fxLayout="row" >
+            Origin Account Number : 1236434394
+         </div>
+      </div>
+      <div fxLayout="column">
+        <label class="sbw_light"> Desitnation Account Number:</label>
+        <select formControlName="Desitnation">
+           <option *ngFor="let title of benificairy" [value]="title.accountNumber">{{title.accountNumber}}</option>
+         </select>
+      </div>  
+      <div fxLayout="column">
+         <label class="sbw_light"> Date:</label>
+         {{currentDate | date: 'dd/MM/yyyy'}}
+       </div>
+
+       <div fxLayout="column">
+         <label for="fname">Enter Amount:</label>
+         <input formControlName="enterAmount" type="text" id="enterAmount" name="enterAmount">
+         <div *ngIf="(enquiryForm.get('enterAmount').dirty || enquiryForm.get('enterAmount').touched) &&
+         enquiryForm.get('enterAmount').errors?.pattern">
+            <p class="text-danger">Number Only</p>
+          </div>
+       </div>
+   </div>   
+   <div fxLayout="row ">
+      <p><label for="w3review">Comments:</label></p>
+      <textarea formControlName="Comments" id="w3review" name="w3review" rows="4" cols="50"></textarea>
+      <br>
+     
+   </div>
+   <button class="transfer" (click)="onSubmit()" [disabled]="enquiryForm.invalid && !updatebalnce"> Transfer
+    </button>
+</form>
+
+
+
+
+<div fxLayout="row wrap" fxLayoutAlign="space-between center" *ngIf="updatebalnce">
+   <h2 class="success">SUCCESS</h2>
+   <h3 >Your Account Balance is: {{successBalance}} </h3>
+</div>
+

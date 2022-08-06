@@ -55,7 +55,7 @@ export class AccountHomeComponent implements OnInit {
   }
 
   callTransfer(_id : string) {
-    //this.router.navigate(['//' + id]);
+    this.router.navigate(['/transfer/' + _id]);
   }
 
   callAccountDetail(_id : string) {

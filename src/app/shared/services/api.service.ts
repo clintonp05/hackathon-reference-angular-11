@@ -40,4 +40,16 @@ export class ApiService {
   public getProductsForUser(payload) {
     return this.httpClient.post(this.appConfigService.hostUrl+"/products/",payload).pipe(catchError(this.handleError));
   }
+
+  public authenticateUser(payload) {
+    return this.httpClient.post(this.appConfigService.hostUrl+"/login/auth/",payload).pipe(catchError(this.handleError));
+  }
+
+  public getBenficiaryDetails() {
+    return this.httpClient.get(this.appConfigService.hostUrl+"/benificiaryDetails/").pipe(catchError(this.handleError));
+  }
+
+  public Transferto(payload) {
+    return this.httpClient.post(this.appConfigService.hostUrl+"/transfer",payload).pipe(catchError(this.handleError));
+  }
 }

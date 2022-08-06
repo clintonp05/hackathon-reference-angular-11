@@ -36,6 +36,13 @@ export class AppConfigService {
     sessionStorage.getItem('username');
   }
 
+  setIsLoggedIn(status) {
+    sessionStorage.setItem('username',status);
+  }
+
+  getIsLoggedIn() {
+    return sessionStorage.getItem('username') == 'true';
+  }
   
 
 
