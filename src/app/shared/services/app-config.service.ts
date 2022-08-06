@@ -10,6 +10,8 @@ export class AppConfigService {
 
   hostUrl = "https://randomuser.me/api/?results=500";
 
+  
+
   getAccessToken(): string {
     return this.cookieService.get('token');
   }
