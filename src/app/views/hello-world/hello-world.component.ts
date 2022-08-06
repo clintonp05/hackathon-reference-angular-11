@@ -15,7 +15,7 @@ export class HelloWorldComponent implements OnInit {
   users : Array<any> = [];
 
   constructor( 
-    private apiService : ApiService 
+    private apiService : ApiService
   ){}
 
   ngOnInit(): void {

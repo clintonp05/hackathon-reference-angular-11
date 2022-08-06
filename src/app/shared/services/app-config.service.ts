@@ -8,9 +8,13 @@ export class AppConfigService {
 
   constructor(private cookieService: CookieService) { }
 
-  hostUrl = "https://randomuser.me/api/?results=500";
+  hostUrl = "https://df53b3f3-a87a-4848-bebf-93e7db0e08cd.mock.pstmn.io"
 
-  
+  STATUS_CODE_SUCCESS = 200;
+  STATUS_CODE_NO_CONTENT = 204;
+  STATUS_CODE_UNAUTHORIZED = 401;
+  STATUS_CODE_FORBIDDEN = 403;
+  STATUS_CODE_INTERNAL_SERVER_ERROR = 500;
 
   getAccessToken(): string {
     return this.cookieService.get('token');

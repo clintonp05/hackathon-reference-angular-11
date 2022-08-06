@@ -1,1 +1,19 @@
-<p>product-detail works!</p>
+<h2>Product Details and list of statements</h2>
+
+
+<div fxLayout="row wrap" fxLayoutAlign="space-between center" class="m-tb-10">
+    <div> Account Number : {{productDetailObj.accountNumber}}</div>
+    <div> Account Balance : {{productDetailObj.accountBalance}}</div>
+    <div> Created Time : {{productDetailObj.createdTime}}</div>
+</div>
+
+<h3>Last 10 transactions</h3>
+
+
+<div>
+    <mat-list>
+        <mat-list-item *ngFor="let statement of accountStatementList;let i = index;trackBy:trackByStatementId">
+            <mat-list-item> <div>Statement - {{i+1}} | {{statement.comment}} | {{statement.amount}} </div></mat-list-item>
+        </mat-list-item>
+    </mat-list>
+</div>
