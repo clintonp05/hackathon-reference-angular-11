@@ -13,12 +13,14 @@ import { AppComponent } from './app.component';
 import { HelloWorldComponent } from './views/hello-world/hello-world.component';
 import { HttpInterceptorService } from './shared/services/http-interceptor.service';
 import { ProductDetailComponent } from './views/product-detail/product-detail.component';
+import { LoginComponent } from './core/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelloWorldComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

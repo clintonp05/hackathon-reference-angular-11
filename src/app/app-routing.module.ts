@@ -6,13 +6,15 @@ import {HelloWorldComponent} from './views/hello-world/hello-world.component';
 import {AccountHomeComponent} from './views/account-home/account-home.component';
 import {ProductDetailComponent} from './views/product-detail/product-detail.component';
 import {AccountStatementInfoComponent} from './views/account-statement-info/account-statement-info.component';
+import { LoginComponent } from './core/login/login.component';
 
 const routes: Routes = [
+  
   { path: 'home', component: AccountHomeComponent, canActivate : [AuthGuardService]},
-  // { path: 'home', component: HelloWorldComponent, loadChildren: () => import('./lazy-loading/lazy-loading.module').then(m => m.LazyLoadingModule)},
   { path: 'productDetails/:id', component:ProductDetailComponent, canActivate : [AuthGuardService]},
   { path: 'statement/:id', component:AccountStatementInfoComponent , canActivate : [AuthGuardService]},
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'login', component:LoginComponent , canActivate : [AuthGuardService]},
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({
